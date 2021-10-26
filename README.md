@@ -1,14 +1,21 @@
-Spring Boot Generated Web Demo
+Java Spring Boot Rest Api Demo
 ==============================
 
-This demo is based on the generated code from <http://start.spring.io> (chose `web` in `Dependencies`),
-and added some code based on the <https://spring.io/guides/gs/spring-boot/>.
-
-Run:
+如何使用SpringBoot来定义RestApi
 
 ```
-mvn package
+brew install httpie
+./mvnw package
 java -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
 
-Visit <http://localhost:8080>, you will see `Hello, spring boot!`
+```
+http POST http://localhost:8080/api/messages text=aaa
+http POST http://localhost:8080/api/messages text=bbb
+
+http POST http://localhost:8080/api/messages text=aa##bb
+
+http GET http://localhost:8080/api/messages
+
+http GET http://localhost:8080/api/messages/0
+```
