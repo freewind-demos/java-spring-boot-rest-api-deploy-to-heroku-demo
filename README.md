@@ -7,7 +7,7 @@ Java Spring Boot Rest Api Deploy to Heroku Demo
 2. 必须在本地添加一个`Procfile`，写上用于heroku执行的命令，如: `web: java -jar target/demo-0.0.1-SNAPSHOT.jar`
 3. 必须在`application.properties`中指定端口号，如：`server.port=${PORT:5000}`
 3. `./mvnw clean package; heroku local:start`用于测试本地是否可以正常运行
-4. `heroku create`，创建一个heroku服务，得到相应的url。可能会提示登录。它会把本地git的`origin`替换为`heroku`
+4. `heroku create`，创建一个heroku服务，得到相应的url。可能会提示登录。它会在本地git添加`heroku`这个origin
 5. `git push heroku master`，把代码提交到heroku的地址，并自动部署
 6. `heroku open`打开url，可以访问啦！
 
