@@ -1,21 +1,16 @@
-Java Spring Boot Rest Api Demo
+Java Spring Boot Rest Api Deploy to Heroku Demo
 ==============================
 
-如何使用SpringBoot来定义RestApi
+使用Heroku可以方便得把我们的Java应用部署到线上，过程比较简单：
 
-```
-brew install httpie
-./mvnw package
-java -jar target/demo-0.0.1-SNAPSHOT.jar
-```
+1. 注册heroku帐号
+2. 必须在本地添加一个`Procfile`，写上用于heroku执行的命令，如: `web: java -jar target/demo-0.0.1-SNAPSHOT.jar`
+3. 必须在`application.properties`中指定端口号，如：`server.port=${PORT:5000}`
+3. `./mvnw clean package; heroku local:start`用于测试本地是否可以正常运行
+4. `heroku create`，创建一个heroku服务，得到相应的url。可能会提示登录。它会把本地git的`origin`替换为`heroku`
+5. `git push heroku master`，把代码提交到heroku的地址，并自动部署
+6. `heroku open`打开url，可以访问啦！
 
-```
-http POST http://localhost:8080/api/messages text=aaa
-http POST http://localhost:8080/api/messages text=bbb
+正常情况会打开如`https://agile-coast-16382.herokuapp.com:5000/`这样的url，然后页面上看到`Hello!`
 
-http POST http://localhost:8080/api/messages text=aa##bb
-
-http GET http://localhost:8080/api/messages
-
-http GET http://localhost:8080/api/messages/0
-```
+如果出错，可以运行`heroku logs --tail`查看日志
